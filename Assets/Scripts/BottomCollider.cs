@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BottomCollider : MonoBehaviour
 {
-    void OnTriggerEnter(Collider col)
+    void OnTriggerEnter2D(Collider2D col)
 	{
 		Destroy(col.gameObject);
 	}
