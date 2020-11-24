@@ -174,7 +174,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -261,6 +261,46 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1081057207}
     m_Modifications:
+    - target: {fileID: 1749907893153279754, guid: 514c1c1d5300c2d439f52d1e995c102e,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1749907893153279754, guid: 514c1c1d5300c2d439f52d1e995c102e,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1749907893377750215, guid: 514c1c1d5300c2d439f52d1e995c102e,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1749907893377750215, guid: 514c1c1d5300c2d439f52d1e995c102e,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1749907893925150686, guid: 514c1c1d5300c2d439f52d1e995c102e,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1749907893925150686, guid: 514c1c1d5300c2d439f52d1e995c102e,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1749907894002947977, guid: 514c1c1d5300c2d439f52d1e995c102e,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1749907894002947977, guid: 514c1c1d5300c2d439f52d1e995c102e,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1749907894090009314, guid: 514c1c1d5300c2d439f52d1e995c102e,
         type: 3}
       propertyPath: m_Name
@@ -320,6 +360,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1749907894382204797, guid: 514c1c1d5300c2d439f52d1e995c102e,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1749907894382204797, guid: 514c1c1d5300c2d439f52d1e995c102e,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1749907894798439066, guid: 514c1c1d5300c2d439f52d1e995c102e,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1749907894798439066, guid: 514c1c1d5300c2d439f52d1e995c102e,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1749907894875912278, guid: 514c1c1d5300c2d439f52d1e995c102e,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1749907894875912278, guid: 514c1c1d5300c2d439f52d1e995c102e,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 514c1c1d5300c2d439f52d1e995c102e, type: 3}

@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 	private float moveInput = 0f;
+	private float step = 2f;
 	
 	void Update()
 	{
@@ -13,14 +14,14 @@ public class PlayerController : MonoBehaviour
 	
 	void FixedUpdate()
 	{
-		if (moveInput > 0)
+		if (moveInput > 0f && transform.position.x < step)
 		{
-			Debug.Log("MoveInput maior do que zero");
+			transform.position = new Vector3 (transform.position.x + step, transform.position.y, 0f);
 		}
 		
-		if (moveInput < 0)
+		if (moveInput < 0f && transform.position.x > -step)
 		{
-			Debug.Log("MoveInput menor do que zero");
+			transform.position = new Vector3 (transform.position.x - step, transform.position.y, 0f);
 		}
 	}
 }
