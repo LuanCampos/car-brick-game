@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -9,6 +11,16 @@ public class PlayerController : MonoBehaviour
 	private int frameCount = 10;
 	private int velocity = 1;
 	private Vector3 movement;
+	private Text scoreText;
+	private GameObject retryPanel;
+	
+	void Start()
+	{
+		scoreText = GameObject.Find("Score Text").GetComponent<Text>();
+		retryPanel = GameObject.Find("Game Over Panel");
+		scoreText.text = "";
+		retryPanel.SetActive(false);
+	}
 	
 	void Update()
 	{
@@ -56,6 +68,7 @@ public class PlayerController : MonoBehaviour
 		}
 		
 		transform.position += movement;
+		scoreText.text = transform.position.y.ToString("#.");
 		frameCount --;
 	}
 	
@@ -65,6 +78,12 @@ public class PlayerController : MonoBehaviour
 		{
 			GameOver();
 		}
+	}
+	
+	public void Retry()
+	{
+		Time.timeScale = 1f;
+		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
 	
 	private void AdjustVelocity()
@@ -112,6 +131,7 @@ public class PlayerController : MonoBehaviour
 	
 	private void GameOver()
 	{
+		retryPanel.SetActive(true);
 		Time.timeScale = 0f;
 	}
 }
