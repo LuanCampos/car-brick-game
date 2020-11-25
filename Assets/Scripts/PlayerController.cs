@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
 	private Vector3 movement;
 	
 	void Update()
-	{
+	{		
 		if (isMoving == false)
 		{
 			moveInput = Input.GetAxis("Horizontal");
@@ -23,6 +23,8 @@ public class PlayerController : MonoBehaviour
 		{
 			isMoving = false;
 		}
+		
+		AdjustVelocity();
 	}
 	
 	void FixedUpdate()
@@ -49,5 +51,56 @@ public class PlayerController : MonoBehaviour
 		
 		transform.position += movement;
 		frameCount --;
+	}
+	
+	void OnTriggerEnter2D(Collider2D col)
+	{
+		if(col.gameObject.tag == "Car")
+		{
+			Debug.Log("Game Over!");
+		}
+	}
+	
+	private void AdjustVelocity()
+	{
+		if (transform.position.y < 15f && velocity != 1)
+		{
+			velocity = 1;
+		}
+		
+		else if (transform.position.y < 30f && velocity != 2)
+		{
+			velocity = 2;
+		}
+		
+		else if (transform.position.y < 45f && velocity != 3)
+		{
+			velocity = 3;
+		}
+		
+		else if (transform.position.y < 60f && velocity != 4)
+		{
+			velocity = 4;
+		}
+		
+		else if (transform.position.y < 120f && velocity != 5)
+		{
+			velocity = 5;
+		}
+		
+		else if (transform.position.y < 240f && velocity != 6)
+		{
+			velocity = 6;
+		}
+		
+		else if (transform.position.y < 480f && velocity != 7)
+		{
+			velocity = 7;
+		}
+		
+		else if (velocity != 8)
+		{
+			velocity = 8;
+		}
 	}
 }
