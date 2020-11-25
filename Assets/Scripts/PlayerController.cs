@@ -8,23 +8,29 @@ public class PlayerController : MonoBehaviour
 	private float step = 1.8f;
 	private int frameCount = 10;
 	private int velocity = 1;
-	private bool isMoving = false;
 	private Vector3 movement;
 	
 	void Update()
-	{		
-		if (isMoving == false)
-		{
-			moveInput = Input.GetAxis("Horizontal");
-			isMoving = true;
-		}
+	{
+		if(Input.GetKeyDown("a") || Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            moveInput = -1;
+        }
 		
-		if (Input.GetAxis("Horizontal") == 0f && isMoving == true)
-		{
-			isMoving = false;
-		}
+        if(Input.GetKeyDown("d") || Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            moveInput = 1;
+        }
 		
 		AdjustVelocity();
+		
+		if (Input.GetKey("space"))
+		{
+			if (velocity < 8)
+			{
+				velocity = 8;
+			}
+		}
 	}
 	
 	void FixedUpdate()
@@ -57,7 +63,7 @@ public class PlayerController : MonoBehaviour
 	{
 		if(col.gameObject.tag == "Car")
 		{
-			Debug.Log("Game Over!");
+			GameOver();
 		}
 	}
 	
@@ -102,5 +108,10 @@ public class PlayerController : MonoBehaviour
 		{
 			velocity = 8;
 		}
+	}
+	
+	private void GameOver()
+	{
+		Time.timeScale = 0f;
 	}
 }
