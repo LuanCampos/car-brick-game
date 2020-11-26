@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
 	private float step = 1.8f;
 	private int frameCount = 10;
 	private int velocity = 1;
+	private bool boost = false;
 	private Vector3 movement;
 	private Text scoreText;
 	private GameObject retryPanel;
@@ -21,12 +22,12 @@ public class PlayerController : MonoBehaviour
 	
 	void Update()
 	{
-		AdjustVelocity();
 		GetInput();
 	}
 	
 	void FixedUpdate()
 	{
+		AdjustVelocity();
 		HandleMovement();
 		SetScore();
 	}
@@ -47,22 +48,24 @@ public class PlayerController : MonoBehaviour
 	
 	private void GetInput()
 	{
-		if(Input.GetKeyDown("a") || Input.GetKeyDown(KeyCode.LeftArrow))
+		if (Input.GetKeyDown("a") || Input.GetKeyDown(KeyCode.LeftArrow))
         {
             moveInput = -1;
         }
 		
-        if(Input.GetKeyDown("d") || Input.GetKeyDown(KeyCode.RightArrow))
+        if (Input.GetKeyDown("d") || Input.GetKeyDown(KeyCode.RightArrow))
         {
             moveInput = 1;
         }
 		
 		if (Input.GetKey("space"))
 		{
-			if (velocity < 8)
-			{
-				velocity = 8;
-			}
+			boost = true;
+		}
+		
+		else
+		{
+			boost = false;
 		}
 	}
 	
@@ -76,15 +79,9 @@ public class PlayerController : MonoBehaviour
 			frameCount = 10;
 		}
 		
-		if (moveInput > 0f && transform.position.x < step)
+		if (moveInput != 0f && transform.position.x * moveInput < step)
 		{
-			movement.x += step;
-			moveInput = 0f;
-		}
-		
-		if (moveInput < 0f && transform.position.x > -step)
-		{
-			movement.x -= step;
+			movement.x += step * moveInput;
 			moveInput = 0f;
 		}
 		
@@ -107,42 +104,42 @@ public class PlayerController : MonoBehaviour
 	
 	private void AdjustVelocity()
 	{
-		if (transform.position.y < 15f && velocity != 1)
+		if (transform.position.y < 15f && !boost)
 		{
 			velocity = 1;
 		}
 		
-		else if (transform.position.y < 30f && velocity != 2)
+		else if (transform.position.y < 30f && !boost)
 		{
 			velocity = 2;
 		}
 		
-		else if (transform.position.y < 45f && velocity != 3)
+		else if (transform.position.y < 45f && !boost)
 		{
 			velocity = 3;
 		}
 		
-		else if (transform.position.y < 60f && velocity != 4)
+		else if (transform.position.y < 60f && !boost)
 		{
 			velocity = 4;
 		}
 		
-		else if (transform.position.y < 120f && velocity != 5)
+		else if (transform.position.y < 120f && !boost)
 		{
 			velocity = 5;
 		}
 		
-		else if (transform.position.y < 240f && velocity != 6)
+		else if (transform.position.y < 240f && !boost)
 		{
 			velocity = 6;
 		}
 		
-		else if (transform.position.y < 480f && velocity != 7)
+		else if (transform.position.y < 480f && !boost)
 		{
 			velocity = 7;
 		}
 		
-		else if (velocity != 8)
+		else
 		{
 			velocity = 8;
 		}
