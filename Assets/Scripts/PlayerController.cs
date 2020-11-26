@@ -16,13 +16,36 @@ public class PlayerController : MonoBehaviour
 	
 	void Start()
 	{
-		scoreText = GameObject.Find("Score Text").GetComponent<Text>();
-		retryPanel = GameObject.Find("Game Over Panel");
-		scoreText.text = "";
-		retryPanel.SetActive(false);
+		FindGameObjects();
 	}
 	
 	void Update()
+	{
+		AdjustVelocity();
+		GetInput();
+	}
+	
+	void FixedUpdate()
+	{
+		HandleMovement();
+		SetScore();
+	}
+	
+	void OnTriggerEnter2D(Collider2D col)
+	{
+		if(col.gameObject.tag == "Car")
+		{
+			GameOver();
+		}
+	}
+	
+	public void Retry()
+	{
+		Time.timeScale = 1f;
+		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+	}
+	
+	private void GetInput()
 	{
 		if(Input.GetKeyDown("a") || Input.GetKeyDown(KeyCode.LeftArrow))
         {
@@ -34,8 +57,6 @@ public class PlayerController : MonoBehaviour
             moveInput = 1;
         }
 		
-		AdjustVelocity();
-		
 		if (Input.GetKey("space"))
 		{
 			if (velocity < 8)
@@ -45,7 +66,7 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 	
-	void FixedUpdate()
+	private void HandleMovement()
 	{
 		movement = Vector3.zero;
 		
@@ -68,22 +89,20 @@ public class PlayerController : MonoBehaviour
 		}
 		
 		transform.position += movement;
-		scoreText.text = transform.position.y.ToString("#.");
 		frameCount --;
 	}
 	
-	void OnTriggerEnter2D(Collider2D col)
+	private void SetScore()
 	{
-		if(col.gameObject.tag == "Car")
-		{
-			GameOver();
-		}
+		scoreText.text = transform.position.y.ToString("#.");
 	}
 	
-	public void Retry()
+	private void FindGameObjects()
 	{
-		Time.timeScale = 1f;
-		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+		scoreText = GameObject.Find("Score Text").GetComponent<Text>();
+		retryPanel = GameObject.Find("Game Over Panel");
+		scoreText.text = "";
+		retryPanel.SetActive(false);
 	}
 	
 	private void AdjustVelocity()
