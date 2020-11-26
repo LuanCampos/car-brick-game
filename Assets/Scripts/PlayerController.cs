@@ -6,44 +6,44 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-	private float moveInput = 0f;
-	private float step = 1.8f;
+	private bool boost = false;
 	private int frameCount = 10;
 	private int velocity = 1;
-	private bool boost = false;
-	private Vector3 movement;
+	private float moveInput = 0f;
+	private float step = 1.8f;
 	private Text scoreText;
+	private Vector3 movement;
 	private GameObject retryPanel;
 	
-	void Start()
+	private void Start()
 	{
 		FindGameObjects();
 	}
 	
-	void Update()
+	private void Update()
 	{
 		GetInput();
 	}
 	
-	void FixedUpdate()
+	private void FixedUpdate()
 	{
 		AdjustVelocity();
 		HandleMovement();
 		SetScore();
 	}
 	
-	void OnTriggerEnter2D(Collider2D col)
+	public void Retry()
+	{
+		Time.timeScale = 1f;
+		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+	}
+	
+	private void OnTriggerEnter2D(Collider2D col)
 	{
 		if(col.gameObject.tag == "Car")
 		{
 			GameOver();
 		}
-	}
-	
-	public void Retry()
-	{
-		Time.timeScale = 1f;
-		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
 	
 	private void GetInput()

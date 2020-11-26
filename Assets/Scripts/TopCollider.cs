@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class TopCollider : MonoBehaviour
 {
-	public GameObject carPrefab;
-	public GameObject trackPrefab;
-	public GameObject topColliderPrefab;
+	[SerializeField] private GameObject carPrefab = null;
+	[SerializeField] private GameObject trackPrefab = null;
+	[SerializeField] private GameObject topColliderPrefab = null;
 	
-    void OnTriggerEnter2D(Collider2D col)
+    private void OnTriggerEnter2D(Collider2D col)
 	{
 		if(col.gameObject.tag == "Player")
 		{

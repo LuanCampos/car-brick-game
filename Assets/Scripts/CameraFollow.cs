@@ -6,12 +6,12 @@ public class CameraFollow : MonoBehaviour
 {
 	private Transform player;
 	
-	void Start()
+	private void Start()
 	{
 		player = GameObject.Find("Player").GetComponent<Transform>();
 	}
 	
-    void LateUpdate()
+    private void LateUpdate()
     {
         transform.position = new Vector3(0f, player.position.y + 4f, -10f);
     }
